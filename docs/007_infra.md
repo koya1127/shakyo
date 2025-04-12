@@ -59,3 +59,13 @@ shakyo/
 - 最終的には「Next.js + API連携」で写経ビューを提供予定
 - GPTに写経内容を送信し、段落ごとに OK / CLOSE / NG の判定を受け取る機能を実装済み
 - NG の場合のみ、その場で評価＋励ましコメントを表示し、再入力を促す仕様
+
+## Git / GitHub運用（2025年4月）
+
+- `.env` を用いたAPIキー管理を採用し、`.gitignore` で追跡除外済み
+- GitHub上の履歴には一切のAPIキーが含まれないよう、orphanブランチによる履歴リセット＋再構築済み
+- GitHub連携済みリポジトリ：`https://github.com/koya1127/shakyo`
+- RenderにてGitHub連携デプロイを使用（push → 自動デプロイ or 手動Deploy）
+- デプロイ用の `requirements.txt` は最小構成に手動で編集
+- push前に `git commit --amend` などを活用し、誤った履歴が含まれないよう管理
+

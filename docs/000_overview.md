@@ -19,3 +19,10 @@ GPT整形 × 写経継続支援システム
 5. GPTによる写経判定機能（段落ごと）と、NG時のフィードバックUIを実装（完了）
 6. GPT整形プロンプトの強化（1〜3文 + 空行の段落構成）（完了）
 7. `split("\n\n")` による段落分割処理を明確化（完了）
+
+## デプロイ状況（2025年4月）
+- Render による無料枠での Webサービスデプロイ完了
+- 公開URL（例）：`https://shakyo.onrender.com/upload`
+- 環境変数（OPENAI_API_KEY等）を `.env` から読み込むセキュア構成に変更
+- requirements.txt を最小限に整理し、依存の肥大化を防止
+- Flaskは `host=0.0.0.0`, `port=os.getenv("PORT")` によって Renderに対応済み
