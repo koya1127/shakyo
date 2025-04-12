@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+output/
+web_backend/formatted_texts/
+web_backend/written_texts/
+web_backend/user_data.json
+.env
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
