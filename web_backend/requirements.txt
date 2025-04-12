@@ -1,0 +1,9 @@
+Flask
+openai
+stripe
+python-dotenv
+pyautogui
+pywinauto
+pytesseract
+Pillow
+pygetwindow
