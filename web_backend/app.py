@@ -24,6 +24,8 @@ PRICE_ID = "price_1RA7qHHJ0fnIcl70kwCi3EkW"
 def write_page(id):
     step = int(request.args.get("step", 0))
     file_path = f"formatted_texts/{id}.txt"
+    prev_result = request.args.get("prev_result")
+    prev_comment = request.args.get("prev_comment")
 
     if not os.path.exists(file_path):
         return "ファイルが見つかりません", 404
@@ -43,7 +45,7 @@ def write_page(id):
     if step >= len(paragraphs):
         return "写経おつかれさまでした！🎉", 200
 
-    return render_template("write.html", para=paragraphs[step], step=step, id=id)
+    return render_template("write.html", para=paragraphs[step], step=step, id=id, result=prev_result, comment=prev_comment)
 
 @app.route("/upload", methods=["GET", "POST"])
 def upload_text():
@@ -255,14 +257,14 @@ def check_written_text(id):
 - judgement: "OK", "CLOSE", "NG" のいずれか（意味が通っていればOK、表現が近ければCLOSE）
 - comment: 学習者を励ます、**感情のこもった応援コメント**を返してください。
   - 特に、元の段落の**内容・雰囲気・テーマ**を踏まえたコメントにしてください。
-  - 「どういう意味のある段落か」「何が良く伝わっているか」など、**読んだ上での感想や解釈を含めて**ください。
+  - 「どういう意味のある段落か」「写経元の文の特徴」など、写経元の文や解釈を含めてください。
   - 書き写した本人に「ちゃんと伝わってるよ」と感じさせるコメントを、肯定的な言葉で表現してください。
 
 出力形式（例）：
-{
+{{
   "judgement": "OK",
   "comment": "（ここに応援コメント）"
-}
+}}
 """
 
     response = client.chat.completions.create(
@@ -289,7 +291,7 @@ def check_written_text(id):
         with open(save_path, "w", encoding="utf-8") as f:
             f.write(user_text.strip())
 
-        return redirect(url_for('write_page', id=id, step=step+1))
+        return redirect(url_for('write_page', id=id, step=step+1, prev_result=judgement, prev_comment=comment))
     else:
         # NG or CLOSE → 再表示、評価付きで
         return render_template("write.html", para=correct, step=step, id=id, result=judgement, comment=comment, prev=user_text)
