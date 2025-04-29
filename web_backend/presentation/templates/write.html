@@ -8,7 +8,7 @@
   <h2>🟦 第{{ step + 1 }}段落</h2>
   <p>{{ para }}</p>
 
-  <form method="post" action="/check/{{ id }}?step={{ step }}">
+  <form method="post" action="/check/{{ id }}?step={{ step }}&user={{ user }}">
     <textarea name="written" rows="5" cols="60" placeholder="ここに写経してください...">{% if prev %}{{ prev }}{% endif %}</textarea>
     <br><br>
     <button type="submit">提出 ▶</button>

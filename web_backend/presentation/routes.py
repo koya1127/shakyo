@@ -1,4 +1,4 @@
-# app.py（GPT整形サブスク用Stripe加入ページ）
+# routes.py
 import stripe
 from openai import OpenAI
 import json
@@ -6,13 +6,9 @@ import os
 import random
 import string
 import uuid
-from dotenv import load_dotenv
-from dotenv import load_dotenv
-from flask import Flask, request, jsonify, render_template, redirect, url_for
+from flask import request, jsonify, render_template, redirect, url_for
+from . import app 
 
-load_dotenv()
-
-app = Flask(__name__)
 
 stripe.api_key = os.getenv("STRIPE_API_KEY")
 
@@ -44,8 +40,10 @@ def write_page(id):
 
     if step >= len(paragraphs):
         return "写経おつかれさまでした！🎉", 200
+    
+    user = request.args.get("user")  
 
-    return render_template("write.html", para=paragraphs[step], step=step, id=id, result=prev_result, comment=prev_comment)
+    return render_template("write.html", para=paragraphs[step], step=step, id=id, result=prev_result, comment=prev_comment, user=user) 
 
 @app.route("/upload", methods=["GET", "POST"])
 def upload_text():
@@ -152,6 +150,28 @@ def create_checkout_session():
         return jsonify({"url": checkout_session.url})
     except Exception as e:
         return jsonify(error=str(e)), 400
+    
+@app.route("/progress/<user_id>")
+def show_progress(user_id):
+    try:
+        with open("user_progress.json", "r", encoding="utf-8") as f:
+            progress = json.load(f)
+    except FileNotFoundError:
+        return f"ユーザー {user_id} の進捗データはまだありません。", 200
+
+    if user_id not in progress:
+        return f"ユーザー {user_id} の進捗は見つかりません。", 200
+
+    user_data = progress[user_id]
+
+    html = f"<h2>🗂 ユーザー {user_id} の進捗状況</h2><ul>"
+    for text_id, step in user_data.items():
+        url = f"/write/{text_id}?step={step}&user={user_id}"
+        html += f"<li>📘 テキストID: <code>{text_id}</code> → {step}段落まで完了！ <a href='{url}'>続きから▶</a></li>"
+    html += "</ul>"
+
+    return html, 200
+
 
 @app.route("/webhook", methods=["POST"])
 def stripe_webhook():
@@ -228,6 +248,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 def check_written_text(id):
     step = int(request.args.get("step", 0))
     user_text = request.form.get("written")
+    user_id = request.args.get("user")
 
     # 正解の段落を取得
     file_path = f"formatted_texts/{id}.txt"
@@ -291,7 +312,25 @@ def check_written_text(id):
         with open(save_path, "w", encoding="utf-8") as f:
             f.write(user_text.strip())
 
-        return redirect(url_for('write_page', id=id, step=step+1, prev_result=judgement, prev_comment=comment))
+        # ✅ 進捗ログを user_progress.json に記録
+        user_id = request.args.get("user")
+        if user_id:
+            try:
+                with open("user_progress.json", "r", encoding="utf-8") as f:
+                    progress = json.load(f)
+            except FileNotFoundError:
+                progress = {}
+
+            progress.setdefault(user_id, {})[id] = step + 1
+
+            with open("user_progress.json", "w", encoding="utf-8") as f:
+                json.dump(progress, f, indent=2, ensure_ascii=False)
+
+        # ✅ 次の段落へ（評価コメント付きで表示）
+        return redirect(url_for("write_page", id=id, step=step+1,
+                        user=user_id,
+                        prev_result=judgement, prev_comment=comment))
+
     else:
         # NG or CLOSE → 再表示、評価付きで
         return render_template("write.html", para=correct, step=step, id=id, result=judgement, comment=comment, prev=user_text)

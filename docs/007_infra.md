@@ -39,12 +39,26 @@ shakyo/
 │
 ├─ src/                           # ローカルOCR処理（クライアント側）
 │   └─ shakyo_main.py
-├─ web_backend/                   # Flaskサーバー側
-│   ├─ app.py                     # APIルーティング
-│   ├─ formatted_texts/          # GPT整形結果（.txt保存）
-│   ├─ written_texts/            # 写経内容保存 
-│   └─ templates/                # HTMLテンプレート
-│       └─ write.html            # チャット形式ビュー 
+├─ web_backend/                   # サーバー側（Flask 基盤）
+│   ├─ presentation/              # 受付カウンター：HTTP ルート
+│   │   ├─ __init__.py
+│   │   └─ routes.py              # ※旧 app.py を移動予定
+│   │
+│   ├─ application/               # ユースケース：手順書
+│   │   └─ __init__.py
+│   │
+│   ├─ domain/                    # ビジネスロジック：段落比較など
+│   │   └─ __init__.py
+│   │
+│   ├─ infrastructure/            # 外部サービス接続
+│   │   ├─ __init__.py
+│   │   └─ openai_client.py  など
+│   │
+│   ├─ templates/                 # HTML テンプレート
+│   │   ├─ upload.html
+│   │   └─ write.html
+│   │
+│   └─ utils/                     # 共通ヘルパー（必要あれば）
 ├─ .gitignore
 ├─ README.md
 └─ requirements.txt（←依存管理しておくと吉）

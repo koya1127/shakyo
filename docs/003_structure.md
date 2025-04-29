@@ -19,4 +19,6 @@
 - progress表示・記録
 
 ### 保存形式
-- `formatted_texts/<id>.txt`（段落ごとに保存可能にする）
+- 整形結果：`formatted_texts/<id>.txt`
+- 写経内容：`written_texts/<id>_<step>.txt`
+

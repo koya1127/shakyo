@@ -14,6 +14,6 @@
 - OpenAI API（GPT-4）
 - Stripe API
 
-### フロント（予定）
-- Next.js or Flask Template
-- GPTチャット風UI
+### フロント
+- Flask Template
+- GPTチャット風UI(フロント)
