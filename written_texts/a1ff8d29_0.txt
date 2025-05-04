@@ -1,0 +1,1 @@
+check_routes.py の import 行に日本語コメントが混ざってしまい、# が無くて Python がコードとして読んでしまった ための SyntaxError です。

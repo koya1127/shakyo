@@ -93,33 +93,23 @@ def gpt_format(text: str) -> str:
 
 ---
 
-**Last Update:** 2025-04-29
 
 
 
-## 3. 現在のディレクトリ構成（Box 作成後）
+## 6. ディレクトリ構成
 
-```
-web_backend/
-├── presentation/          # 受付カウンター (Flask ルート)
-│   ├─ __init__.py
-│   └─ routes.py
-├── application/           # ユースケース
-│   └─ __init__.py
-├── domain/                # ビジネスロジック
-│   └─ __init__.py
-├── infrastructure/        # 外部依存
-│   └─ __init__.py
-└── templates/             # HTML
+実際のフォルダツリーと Render 設定は  
+▶︎ **docs/007_infra.md** を参照してください。
+
 ```
 
 ---
 
-## 4. コメント / Docstring 規約
+## 7. コメント / Docstring 規約
 
 > **目的** : “何をするコードか” を 3 秒で把握できるようにする。
 
-### 4.1 モジュール / パッケージ (`__init__.py`)
+### 8.1 モジュール / パッケージ (`__init__.py`)
 
 ```python
 """Presentation 層: Flask アプリ生成窓口。
@@ -131,7 +121,7 @@ app を 1 回だけ生成し、routes を読み込んで紐付ける。"""
 - 1 行目 = 概要（50 文字以内）
 - 2 行目空行 + 詳細 (箇条書き可)
 
-### 4.2 関数・メソッド (Google Docstring)
+### 8.2 関数・メソッド (Google Docstring)
 
 ```python
 def calc_score(text: str) -> int:
@@ -147,7 +137,7 @@ def calc_score(text: str) -> int:
 
 - 引数・戻り値を明示。外部副作用があれば **Raises:** で列挙。
 
-### 4.3 インラインコメント
+### 8.3 インラインコメント
 
 - 行末コメントは 60–70 桁で改行。
 - 「何をしているか」より **“なぜ”** を書く。

@@ -1,0 +1,248 @@
+フォルダー パスの一覧:  ボリューム Windows
+ボリューム シリアル番号は 8AD3-24DB です
+C:.
+|   .gitignore
+|   dir_snapshot.txt
+|   python
+|   README.md
+|   run.py
+|   user_progress.json
+|   
++---docs
+|       000_overview.md
+|       001_pages.md
+|       002_api.md
+|       003_structure.md
+|       004_techStack.md
+|       005_research.md
+|       006_db.md
+|       007_infra.md
+|       008_core.md
+|       009_tasks.md
+|       010_other.md
+|       011_architecture.md.md
+|       
++---formatted_texts
+|       e6dbf011.txt
+|       
++---output
+|   +---shakyo_output
+|   |       page_1.png
+|   |       page_1.txt
+|   |       page_10.png
+|   |       page_10.txt
+|   |       page_2.png
+|   |       page_2.txt
+|   |       page_3.png
+|   |       page_3.txt
+|   |       page_4.png
+|   |       page_4.txt
+|   |       page_5.png
+|   |       page_5.txt
+|   |       page_6.png
+|   |       page_6.txt
+|   |       page_7.png
+|   |       page_7.txt
+|   |       page_8.png
+|   |       page_8.txt
+|   |       page_9.png
+|   |       page_9.txt
+|   |       
+|   +---shakyo_output_auto
+|   |       page_1.png
+|   |       page_1.txt
+|   |       page_10.png
+|   |       page_10.txt
+|   |       page_2.png
+|   |       page_2.txt
+|   |       page_3.png
+|   |       page_3.txt
+|   |       page_4.png
+|   |       page_4.txt
+|   |       page_5.png
+|   |       page_5.txt
+|   |       page_6.png
+|   |       page_6.txt
+|   |       page_7.png
+|   |       page_7.txt
+|   |       page_8.png
+|   |       page_8.txt
+|   |       page_9.png
+|   |       page_9.txt
+|   |       
+|   +---shakyo_output_cleaned
+|   |       page_1.txt
+|   |       page_10.txt
+|   |       page_10_cleaned.png
+|   |       page_10_raw.png
+|   |       page_1_cleaned.png
+|   |       page_1_raw.png
+|   |       page_2.txt
+|   |       page_2_cleaned.png
+|   |       page_2_raw.png
+|   |       page_3.txt
+|   |       page_3_cleaned.png
+|   |       page_3_raw.png
+|   |       page_4.txt
+|   |       page_4_cleaned.png
+|   |       page_4_raw.png
+|   |       page_5.txt
+|   |       page_5_cleaned.png
+|   |       page_5_raw.png
+|   |       page_6.txt
+|   |       page_6_cleaned.png
+|   |       page_6_raw.png
+|   |       page_7.txt
+|   |       page_7_cleaned.png
+|   |       page_7_raw.png
+|   |       page_8.txt
+|   |       page_8_cleaned.png
+|   |       page_8_raw.png
+|   |       page_9.txt
+|   |       page_9_cleaned.png
+|   |       page_9_raw.png
+|   |       
+|   +---shakyo_output_gpt
+|   |       merged_pages_1_to_10.txt
+|   |       merged_pages_1_to_10_final.txt
+|   |       merged_raw_ocr.txt
+|   |       page_10_gpt.txt
+|   |       page_1_gpt.txt
+|   |       page_2_gpt.txt
+|   |       page_3_gpt.txt
+|   |       page_4_gpt.txt
+|   |       page_5_gpt.txt
+|   |       page_6_gpt.txt
+|   |       page_7_gpt.txt
+|   |       page_8_gpt.txt
+|   |       page_9_gpt.txt
+|   |       
+|   +---shakyo_output_gray
+|   |       page_1.txt
+|   |       page_10.txt
+|   |       page_10_gray.png
+|   |       page_10_raw.png
+|   |       page_1_gray.png
+|   |       page_1_raw.png
+|   |       page_2.txt
+|   |       page_2_gray.png
+|   |       page_2_raw.png
+|   |       page_3.txt
+|   |       page_3_gray.png
+|   |       page_3_raw.png
+|   |       page_4.txt
+|   |       page_4_gray.png
+|   |       page_4_raw.png
+|   |       page_5.txt
+|   |       page_5_gray.png
+|   |       page_5_raw.png
+|   |       page_6.txt
+|   |       page_6_gray.png
+|   |       page_6_raw.png
+|   |       page_7.txt
+|   |       page_7_gray.png
+|   |       page_7_raw.png
+|   |       page_8.txt
+|   |       page_8_gray.png
+|   |       page_8_raw.png
+|   |       page_9.txt
+|   |       page_9_gray.png
+|   |       page_9_raw.png
+|   |       
+|   \---shakyo_output_raw
+|           page_1.png
+|           page_1.txt
+|           page_10.png
+|           page_10.txt
+|           page_10_raw.png
+|           page_1_raw.png
+|           page_2.png
+|           page_2.txt
+|           page_2_raw.png
+|           page_3.png
+|           page_3.txt
+|           page_3_raw.png
+|           page_4.png
+|           page_4.txt
+|           page_4_raw.png
+|           page_5.png
+|           page_5.txt
+|           page_5_raw.png
+|           page_6.png
+|           page_6.txt
+|           page_6_raw.png
+|           page_7.png
+|           page_7.txt
+|           page_7_raw.png
+|           page_8.png
+|           page_8.txt
+|           page_8_raw.png
+|           page_9.png
+|           page_9.txt
+|           page_9_raw.png
+|           
++---src
+|       .env
+|       .gitignore
+|       shakyo_main.py
+|       
++---web_backend
+|   |   .env
+|   |   .gitignore
+|   |   requirements.txt
+|   |   user_data.json
+|   |   user_progress.json
+|   |   
+|   +---application
+|   |       __init__.py
+|   |       
+|   +---domain
+|   |       __init__.py
+|   |       
+|   +---formatted_texts
+|   |       05c55f5b.txt
+|   |       1e9834da.txt
+|   |       1ff09bac.txt
+|   |       3acfd42e.txt
+|   |       51eb8b32.txt
+|   |       638069de.txt
+|   |       735ac7fb.txt
+|   |       a0e8997f.txt
+|   |       a87781cb.txt
+|   |       b25a029a.txt
+|   |       b3add9e7.txt
+|   |       cfc1485c.txt
+|   |       f98eb5bd.txt
+|   |       
+|   +---infrastructure
+|   |       __init__.py
+|   |       
+|   +---presentation
+|   |   |   routes.py
+|   |   |   __init__.py
+|   |   |   
+|   |   +---templates
+|   |   |       upload.html
+|   |   |       write.html
+|   |   |       
+|   |   \---__pycache__
+|   |           routes.cpython-311.pyc
+|   |           __init__.cpython-311.pyc
+|   |           
+|   \---written_texts
+|           1e9834da_0.txt
+|           1e9834da_1.txt
+|           1e9834da_2.txt
+|           1ff09bac_0.txt
+|           1ff09bac_1.txt
+|           3acfd42e_0.txt
+|           51eb8b32_0.txt
+|           a0e8997f_0.txt
+|           cfc1485c_0.txt
+|           cfc1485c_1.txt
+|           cfc1485c_2.txt
+|           f98eb5bd_0.txt
+|           
+\---written_texts
+        e6dbf011_0.txt
+        

@@ -9,3 +9,4 @@ web_backend/user_data.json
 .idea/
 .DS_Store
 Thumbs.db
+.venv/

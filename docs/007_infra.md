@@ -37,7 +37,8 @@ shakyo/
 ├─ src/                       # ローカル OCR ツール
 │   └─ shakyo_main.py
 ├─ web_backend/               # サーバー側
-│   ├─ presentation/          # 受付＋UI (**HTML あり**)
+│   ├─ presentation/         # 受付＋UI (**HTML あり**)
+│   │   ├─ controllers/     # Blueprint 各種
 │   │   ├─ __init__.py
 │   │   ├─ routes.py
 │   │   └─ templates/
@@ -49,6 +50,7 @@ shakyo/
 │   │   └─ __init__.py
 │   ├─ infrastructure/        # 外部サービスラッパ (空フォルダ)
 │   │   └─ __init__.py
+│   ├─ utils/                 # 共通ヘルパ
 │   └─ run.py                 # ローカル起動スクリプト
 │
 ├─ .gitignore
