@@ -32,36 +32,28 @@
 `C:\Users\fab24\Documents\shakyo`
 
 shakyo/
-├─ docs/                          # この仕様書ファイルたち（.md）
-│   ├─ 000_overview.md
-│   ├─ 001_pages.md
-│   └─ ...（〜010）
-│
-├─ src/                           # ローカルOCR処理（クライアント側）
+├─ docs/
+│   └─ …(markdown 省略)
+├─ src/                       # ローカル OCR ツール
 │   └─ shakyo_main.py
-├─ web_backend/                   # サーバー側（Flask 基盤）
-│   ├─ presentation/              # 受付カウンター：HTTP ルート
+├─ web_backend/               # サーバー側
+│   ├─ presentation/          # 受付＋UI (**HTML あり**)
 │   │   ├─ __init__.py
-│   │   └─ routes.py              # ※旧 app.py を移動予定
-│   │
-│   ├─ application/               # ユースケース：手順書
+│   │   ├─ routes.py
+│   │   └─ templates/
+│   │       ├─ upload.html
+│   │       └─ write.html
+│   ├─ application/           # ユースケース (空フォルダ, これから実装)
 │   │   └─ __init__.py
-│   │
-│   ├─ domain/                    # ビジネスロジック：段落比較など
+│   ├─ domain/                # ビジネスロジック (空フォルダ)
 │   │   └─ __init__.py
-│   │
-│   ├─ infrastructure/            # 外部サービス接続
-│   │   ├─ __init__.py
-│   │   └─ openai_client.py  など
-│   │
-│   ├─ templates/                 # HTML テンプレート
-│   │   ├─ upload.html
-│   │   └─ write.html
-│   │
-│   └─ utils/                     # 共通ヘルパー（必要あれば）
+│   ├─ infrastructure/        # 外部サービスラッパ (空フォルダ)
+│   │   └─ __init__.py
+│   └─ run.py                 # ローカル起動スクリプト
+│
 ├─ .gitignore
 ├─ README.md
-└─ requirements.txt（←依存管理しておくと吉）
+└─ requirements.txt           # gunicorn 追加済み
 
 ---
 
