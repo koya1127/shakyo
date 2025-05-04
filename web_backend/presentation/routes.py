@@ -8,6 +8,7 @@ import string
 import uuid
 from flask import request, jsonify, render_template, redirect, url_for
 from . import app 
+from web_backend.utils.paragraph import split_paragraphs
 
 
 stripe.api_key = os.getenv("STRIPE_API_KEY")
@@ -27,7 +28,7 @@ def write_page(id):
         return "ファイルが見つかりません", 404
 
     with open(file_path, "r", encoding="utf-8") as f:
-        paragraphs = [p.strip() for p in f.read().split("\n") if p.strip()]
+        paragraphs = paragraphs = split_paragraphs(f.read())
 
     if request.method == "POST":
         user_text = request.form.get("written")
@@ -238,7 +239,7 @@ def get_formatted_text(id):
         content = f.read()
 
     # 空行で段落分割し、空でない行だけ返す
-    paragraphs = [p.strip() for p in content.split("\n") if p.strip()]
+    paragraphs = split_paragraphs(content)
 
     return jsonify({"paragraphs": paragraphs})
 
@@ -256,7 +257,7 @@ def check_written_text(id):
         return "整形テキストが見つかりません", 404
 
     with open(file_path, "r", encoding="utf-8") as f:
-        paragraphs = [p.strip() for p in f.read().split() if p.strip()]
+        paragraphs = split_paragraphs(f.read())
     
     if step >= len(paragraphs):
         return "段落ステップが範囲外です", 400

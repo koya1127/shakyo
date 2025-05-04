@@ -13,6 +13,8 @@
   - `/write/<id>`：1段落ずつ写経・保存フォーム 
   - `/check/<id>`：GPTによる段落判定API（POST）
 
+#### 共通ヘルパ
+- `utils/paragraph.py`：段落を空行で分割する純粋関数 `split_paragraphs()`
 
 ### フロントエンド（予定）
 - チャットUI
